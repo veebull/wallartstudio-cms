@@ -38,7 +38,7 @@ export default async function CitiesPage() {
       </p>
       {Object.entries(byDistrict).sort().map(([fd, arts]) => (
         <section key={fd} style={{ marginBottom: 36 }}>
-          <h2 style={{ fontSize: 16, fontWeight: 600, color: 'var(--text3)', marginBottom: 12, textTransform: 'uppercase', letterSpacing: '0.05em', fontSize: 12 }}>{fd}</h2>
+          <h2 style={{ fontSize: 16, fontWeight: 600, color: 'var(--text3)', marginBottom: 12, textTransform: 'uppercase', letterSpacing: '0.05em'}}>{fd}</h2>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill,minmax(180px,1fr))', gap: 8 }}>
             {arts.map(a => (
               <Link key={a.id} href={`/goroda/${a.slug}`}
