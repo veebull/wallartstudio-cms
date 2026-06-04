@@ -157,14 +157,12 @@ async function runAgentJob(
         .update(agentJobs)
         .set({ status: "running", currentCity: city.name, citiesDone: done })
         .where(eq(agentJobs.id, jobId));
-      await db
-        .insert(agentLogs)
-        .values({
-          jobId,
-          cityId: city.id,
-          event: "started",
-          message: `Обработка: ${city.name}`,
-        });
+      await db.insert(agentLogs).values({
+        jobId,
+        cityId: city.id,
+        event: "started",
+        message: `Обработка: ${city.name}`,
+      });
 
       try {
         const cityInfo = {
@@ -214,24 +212,20 @@ async function runAgentJob(
         }
 
         done++;
-        await db
-          .insert(agentLogs)
-          .values({
-            jobId,
-            cityId: city.id,
-            event: "generated",
-            message: `Статья создана, ${wc} слов`,
-          });
+        await db.insert(agentLogs).values({
+          jobId,
+          cityId: city.id,
+          event: "generated",
+          message: `Статья создана, ${wc} слов`,
+        });
       } catch (err: any) {
         failed++;
-        await db
-          .insert(agentLogs)
-          .values({
-            jobId,
-            cityId: city.id,
-            event: "error",
-            message: err?.message || "Unknown error",
-          });
+        await db.insert(agentLogs).values({
+          jobId,
+          cityId: city.id,
+          event: "error",
+          message: err?.message || "Unknown error",
+        });
         await db
           .update(agentJobs)
           .set({ citiesFailed: failed })

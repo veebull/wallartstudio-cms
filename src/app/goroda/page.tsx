@@ -4,6 +4,8 @@ import { db } from '@/db'
 import { articles, cities } from '@/db/schema'
 import { eq } from 'drizzle-orm'
 
+export const dynamic = 'force-dynamic'
+
 export const metadata: Metadata = {
   title: 'Печать на стенах по городам России',
   description: 'Выберите свой город и узнайте стоимость и условия печати на стенах вертикальным принтером.',

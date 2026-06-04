@@ -5,6 +5,8 @@ import { articles, cities } from '@/db/schema'
 import { eq, desc, sql } from 'drizzle-orm'
 import CityCards from '@/components/CityCards'
 
+export const dynamic = 'force-dynamic'
+
 export const metadata: Metadata = {
   title: 'Печать на стенах по всей России — от 2 900 ₽/м²',
   description: 'Вертикальный принтер наносит любое изображение на стены, потолки, полы. Работаем во всех городах России. Готово за 1 день.',

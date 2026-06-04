@@ -7,6 +7,8 @@ import { eq, desc } from 'drizzle-orm'
 
 type Params = { params: Promise<{ id: string }> }
 
+export const dynamic = 'force-dynamic'
+
 export async function GET(_req: NextRequest, { params }: Params) {
   const session = await getServerSession(authOptions)
   if (!session) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })

@@ -7,6 +7,8 @@ import { eq } from 'drizzle-orm'
 
 type Params = { params: Promise<{ id: string }> }
 
+export const dynamic = 'force-dynamic'
+
 export async function GET(_req: NextRequest, { params }: Params) {
   const { id } = await params
   const [row] = await db.select().from(articles).where(eq(articles.id, id))

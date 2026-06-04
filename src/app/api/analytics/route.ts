@@ -5,6 +5,8 @@ import { db } from '@/db'
 import { articles, cities, articleStats } from '@/db/schema'
 import { eq, gte, desc, sql } from 'drizzle-orm'
 
+export const dynamic = 'force-dynamic'
+
 export async function GET(req: NextRequest) {
   const session = await getServerSession(authOptions)
   if (!session) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })

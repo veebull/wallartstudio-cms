@@ -1,4 +1,7 @@
 import type { Metadata } from 'next'
+
+export const dynamic = 'force-dynamic'
+
 import { notFound } from 'next/navigation'
 import Link from 'next/link'
 import { db } from '@/db'
@@ -24,13 +27,13 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   }
 }
 
-export async function generateStaticParams() {
-  const rows = await db
-    .select({ slug: articles.slug })
-    .from(articles)
-    .where(eq(articles.status, 'published'))
-  return rows.map(r => ({ slug: r.slug }))
-}
+// export async function generateStaticParams() {
+//   const rows = await db
+//     .select({ slug: articles.slug })
+//     .from(articles)
+//     .where(eq(articles.status, 'published'))
+//   return rows.map(r => ({ slug: r.slug }))
+// }
 
 // Pure server-side render — no event handlers allowed here
 function renderBlock(block: Block, cityName: string): React.ReactNode {
