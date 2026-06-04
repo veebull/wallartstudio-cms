@@ -4,8 +4,7 @@ import bcrypt from "bcryptjs";
 import { users, cities } from "./schema";
 
 if (process.env.NODE_ENV !== "production") {
-  const { config } = await import("dotenv");
-  config();
+  require("dotenv").config();
 }
 
 const pool = new Pool({ connectionString: process.env.DATABASE_URL! });
